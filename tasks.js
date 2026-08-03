@@ -68,6 +68,9 @@ function onDataReceived(text) {
   else if (command === "add") {
     add(argument);
   }
+  else if (command === "remove") {
+    remove(argument);
+  }
   else {
     unknownCommand(text);
   }
@@ -164,6 +167,29 @@ function add(task) {
   tasks.push(task);
 
   console.log(`Task "${task}" added.`);
+}
+
+/**
+ * Removes a task from the task list.
+ *
+ * @param {string} taskNumber the task number to remove
+ * @returns {void}
+ */
+function remove(taskNumber) {
+  if (!taskNumber) {
+
+    let removedTask = tasks.pop();
+    console.log(`Task "${removedTask}" removed.`);
+    return;
+  }
+
+  // Convert the task number from string to number
+  let index = Number(taskNumber);
+
+  // Remove one task from the array
+  tasks.splice(index - 1, 1);
+
+  console.log(`Task ${taskNumber} removed.`);
 }
 
 // The following line starts the application
