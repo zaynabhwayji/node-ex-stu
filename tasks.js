@@ -34,13 +34,26 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\r\n' || text === 'exit\r\n') {
+  // Remove extra spaces and the Enter characters (\r\n)
+  text = text.trim();
+
+  // Split the text into separate words using the space character
+  // Example: "hello batata" becomes: ["hello", "batata"]
+  let words = text.split(" ");
+
+  // Get the first word from the array the first word is always the command
+  let command = words[0];
+
+  // Take all words after the command and join them back into one string
+  let argument = words.slice(1).join(" ");
+
+  if (command === 'quit' || command === 'exit') {
     quit();
   }
-  else if(text === 'hello\r\n'){
-    hello();
+  else if(command === 'hello'){
+    hello(argument);
   }
-   else if(text === 'help\r\n'){
+   else if(command === 'help'){
     help();
   }
   else{
@@ -64,10 +77,12 @@ function unknownCommand(c){
 /**
  * Says hello
  *
+ * @param {string} sentence the text received after hello command
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(sentence){
+  //prints hello followed by the text received after the hello command
+  console.log(`hello ${sentence}!`)
 }
 
 
