@@ -132,6 +132,7 @@ function help() {
   console.log("help - Displays this help message.");
   console.log("list - Displays the list of tasks.");
   console.log("add [task] - Adds a new task to the list.");
+  console.log("remove [task number] - Removes the task with the specified number from the list. If no number is provided, removes the last task.");
 }
 
 /**
