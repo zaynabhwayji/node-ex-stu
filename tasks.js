@@ -1,8 +1,17 @@
 // List of tasks
 let tasks = [
-  "Buy bread",
-  "Do the exercise",
-  "Study Node.js"
+  {
+    text: "Buy bread",
+    done: false
+  },
+  {
+    text: "Do the exercise",
+    done: true
+  },
+  {
+    text: "Study Node.js",
+    done: true
+  }
 ];
 
 /**
@@ -140,15 +149,20 @@ function help() {
 }
 
 /**
- * Prints all tasks with their numbers.
+ * Prints all tasks with their numbers status.
  *
  * @returns {void}
  */
 function list() {
 
   for (let i = 0; i < tasks.length; i++) {
-
-    console.log(`${i + 1} - ${tasks[i]}`);
+    let task = tasks[i];
+     if (task.done) {
+      console.log(`${i + 1} - [✓] ${task.text}`);
+    } 
+    else {
+      console.log(`${i + 1} - [ ] ${task.text}`);
+    }
 
   }
 
@@ -169,7 +183,7 @@ function add(task) {
   }
 
   // Add the task to the array
-  tasks.push(task);
+  tasks.push({ text: task, done: false });
 
   console.log(`Task "${task}" added.`);
 }
@@ -184,7 +198,7 @@ function remove(taskNumber) {
   if (!taskNumber) {
 
     let removedTask = tasks.pop();
-    console.log(`Task "${removedTask}" removed.`);
+    console.log(`Task "${removedTask.text}" removed.`);
     return;
   }
 
@@ -231,7 +245,7 @@ function edit(arguments) {
       return;
     }
 
-    tasks[taskNumber - 1] = newText;
+    tasks[taskNumber - 1].text = newText;
 
     console.log(`Task ${taskNumber} changed to "${newText}"`);
 
@@ -243,7 +257,7 @@ function edit(arguments) {
 
     let newText = arguments.join(" ");
 
-    tasks[tasks.length - 1] = newText;
+    tasks[tasks.length - 1].text = newText;
 
     console.log(`Last task changed to "${newText}"`);
 
