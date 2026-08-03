@@ -1,4 +1,6 @@
 const fs = require("fs");
+let databaseFile = process.argv[2] || "database.json";
+let tasks = [];
 
 /**
  * Saves tasks to database.json
@@ -9,7 +11,7 @@ function saveTasks() {
 
   let data = JSON.stringify(tasks, null, 2);
 
-  fs.writeFileSync("database.json", data);
+  fs.writeFileSync(databaseFile, data);
 
 }
 
@@ -22,7 +24,7 @@ function loadTasks() {
 
   try {
 
-    let data = fs.readFileSync("database.json", "utf8");
+    let data = fs.readFileSync(databaseFile, "utf8");
 
     tasks = JSON.parse(data);
 
@@ -31,6 +33,7 @@ function loadTasks() {
   catch(error) {
 
     console.log("No database found, starting fresh.");
+    tasks = [];
 
   }
 

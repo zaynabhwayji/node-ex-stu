@@ -1,0 +1,14 @@
+[
+  {
+    "text": "Buy bread",
+    "done": false
+  },
+  {
+    "text": "Study Node.js",
+    "done": true
+  },
+  {
+    "text": "Do the exercise",
+    "done": true
+  }
+]

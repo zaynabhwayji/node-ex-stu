@@ -1,0 +1,18 @@
+[
+  {
+    "text": "go to gym",
+    "done": false
+  },
+  {
+    "text": "wake up 8",
+    "done": false
+  },
+  {
+    "text": "study node",
+    "done": false
+  },
+  {
+    "text": "study react",
+    "done": false
+  }
+]
