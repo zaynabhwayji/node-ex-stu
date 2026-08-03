@@ -83,6 +83,12 @@ function onDataReceived(text) {
   else if (command === "edit") {
     edit(words.slice(1));
   }
+  else if (command === "check") {
+  check(argument);
+}
+  else if (command === "uncheck") {
+  uncheck(argument);
+}
   else {
     unknownCommand(text);
   }
@@ -263,6 +269,74 @@ function edit(arguments) {
 
   }
 
+}
+
+/**
+ * Marks a task as done.
+ *
+ * @param {string} taskNumber the task number to check
+ * @returns {void}
+ */
+function check(taskNumber) {
+
+  // If no task number was provided
+  if (!taskNumber) {
+    console.log("Error: Please enter a task number.");
+    return;
+  }
+
+  // Convert string to number
+  let index = Number(taskNumber);
+
+  // Check if the number is valid
+  if (isNaN(index) || index < 1 || index > tasks.length) {
+    console.log("Error: Invalid task number.");
+    return;
+  }
+
+  // Check if task is already done
+  if (tasks[index - 1].done) {
+    console.log(`Task ${taskNumber} is already checked.`);
+    return;
+  }
+
+  // Change task status to done
+  tasks[index - 1].done = true;
+  console.log(`Task ${taskNumber} is marked as checked.`);
+}
+
+/**
+ * Marks a task as not done.
+ *
+ * @param {string} taskNumber the task number to uncheck
+ * @returns {void}
+ */
+function uncheck(taskNumber) {
+
+  // If no task number was provided
+  if (!taskNumber) {
+    console.log("Error: Please enter a task number.");
+    return;
+  }
+
+  // Convert string to number
+  let index = Number(taskNumber);
+
+  // Check if the number is valid
+  if (isNaN(index) || index < 1 || index > tasks.length) {
+    console.log("Error: Invalid task number.");
+    return;
+  }
+
+  // Check if task is already done
+  if (!tasks[index - 1].done) {
+    console.log(`Task ${taskNumber} is already unchecked.`);
+    return;
+  }
+
+  // Change task status to unchecked
+  tasks[index - 1].done = false;
+  console.log(`Task ${taskNumber} is marked as unchecked.`);
 }
 // The following line starts the application
 startApp("Zaynab Hwayji");
