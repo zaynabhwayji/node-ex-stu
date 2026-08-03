@@ -111,7 +111,7 @@ function quit(){
  */
 function help(){
   console.log("Available commands:");
-  console.log("hello");
+  console.log("hello [text] - Greets the user with the provided text or just says hello if no text is provided.");
   console.log("quit");
   console.log("exit");
   console.log("help");
