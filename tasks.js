@@ -152,6 +152,8 @@ function help() {
   console.log("add [task] - Adds a new task to the list.");
   console.log("remove [task number] - Removes the task with the specified number from the list. If no number is provided, removes the last task.");
   console.log("edit [task number] [new text] - Edits the task with the specified number and replaces it with the new text. If no number is provided, edits the last task.");
+  console.log("check [task number] - Marks the task with the specified number as done.");
+  console.log("uncheck [task number] - Marks the task with the specified number as not done.");
 }
 
 /**
