@@ -65,6 +65,9 @@ function onDataReceived(text) {
   else if (command === "list") {
     list();
   }
+  else if (command === "add") {
+    add(argument);
+  }
   else {
     unknownCommand(text);
   }
@@ -125,6 +128,7 @@ function help() {
   console.log("exit - Exits the application.");
   console.log("help - Displays this help message.");
   console.log("list - Displays the list of tasks.");
+  console.log("add [task] - Adds a new task to the list.");
 }
 
 /**
@@ -140,6 +144,26 @@ function list() {
 
   }
 
+}
+
+/**
+ * Adds a new task to the task list.
+ *
+ * @param {string} task the task to add
+ * @returns {void}
+ */
+function add(task) {
+
+  // Check if the user entered a task
+  if (!task) {
+    console.log("Error: Please enter a task.");
+    return;
+  }
+
+  // Add the task to the array
+  tasks.push(task);
+
+  console.log(`Task "${task}" added.`);
 }
 
 // The following line starts the application
