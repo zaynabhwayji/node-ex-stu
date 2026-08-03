@@ -1,18 +1,40 @@
-// List of tasks
-let tasks = [
-  {
-    text: "Buy bread",
-    done: false
-  },
-  {
-    text: "Do the exercise",
-    done: true
-  },
-  {
-    text: "Study Node.js",
-    done: true
+const fs = require("fs");
+
+/**
+ * Saves tasks to database.json
+ *
+ * @returns {void}
+ */
+function saveTasks() {
+
+  let data = JSON.stringify(tasks, null, 2);
+
+  fs.writeFileSync("database.json", data);
+
+}
+
+/**
+ * Loads tasks from database.json
+ *
+ * @returns {void}
+ */
+function loadTasks() {
+
+  try {
+
+    let data = fs.readFileSync("database.json", "utf8");
+
+    tasks = JSON.parse(data);
+
   }
-];
+
+  catch(error) {
+
+    console.log("No database found, starting fresh.");
+
+  }
+
+}
 
 /**
  * Starts the application
@@ -132,6 +154,7 @@ function hello(sentence) {
  * @returns {void}
  */
 function quit() {
+  saveTasks();
   console.log('Quitting now, goodbye!')
   process.exit();
 }
@@ -340,5 +363,8 @@ function uncheck(taskNumber) {
   tasks[index - 1].done = false;
   console.log(`Task ${taskNumber} is marked as unchecked.`);
 }
+
+loadTasks();
+
 // The following line starts the application
 startApp("Zaynab Hwayji");
