@@ -1,3 +1,9 @@
+// List of tasks
+let tasks = [
+  "Buy bread",
+  "Do the exercise",
+  "Study Node.js"
+];
 
 /**
  * Starts the application
@@ -56,6 +62,9 @@ function onDataReceived(text) {
    else if(command === 'help'){
     help();
   }
+  else if (command === "list") {
+    list();
+  }
   else{
     unknownCommand(text);
   }
@@ -112,9 +121,25 @@ function quit(){
 function help(){
   console.log("Available commands:");
   console.log("hello [text] - Greets the user with the provided text or just says hello if no text is provided.");
-  console.log("quit");
-  console.log("exit");
-  console.log("help");
+  console.log("quit - Exits the application.");
+  console.log("exit - Exits the application.");
+  console.log("help - Displays this help message.");
+  console.log("list - Displays the list of tasks.");
+}
+
+/**
+ * Prints all tasks with their numbers.
+ *
+ * @returns {void}
+ */
+function list() {
+
+    for (let i = 0; i < tasks.length; i++) {
+
+        console.log(`${i + 1} - ${tasks[i]}`);
+
+    }
+
 }
 
 // The following line starts the application
