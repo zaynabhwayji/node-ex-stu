@@ -71,6 +71,9 @@ function onDataReceived(text) {
   else if (command === "remove") {
     remove(argument);
   }
+  else if (command === "edit") {
+    edit(words.slice(1));
+  }
   else {
     unknownCommand(text);
   }
@@ -133,6 +136,7 @@ function help() {
   console.log("list - Displays the list of tasks.");
   console.log("add [task] - Adds a new task to the list.");
   console.log("remove [task number] - Removes the task with the specified number from the list. If no number is provided, removes the last task.");
+  console.log("edit [task number] [new text] - Edits the task with the specified number and replaces it with the new text. If no number is provided, edits the last task.");
 }
 
 /**
@@ -197,5 +201,54 @@ function remove(taskNumber) {
   console.log(`Task ${taskNumber} removed.`);
 }
 
+/**
+ * Edits an existing task in the task list.
+ *
+ * @param {array} arguments the arguments after edit command
+ * @returns {void}
+ */
+function edit(arguments) {
+
+  if (arguments.length === 0) {
+    console.log("Error: Please enter new text.");
+    return;
+  }
+
+  let taskNumber = Number(arguments[0]);
+
+  // User provided a task number
+  if (!isNaN(taskNumber)) {
+
+    if (taskNumber < 1 || taskNumber > tasks.length) {
+      console.log("Error: Invalid task number.");
+      return;
+    }
+
+    let newText = arguments.slice(1).join(" ");
+
+    if (!newText) {
+      console.log("Error: Please enter new text.");
+      return;
+    }
+
+    tasks[taskNumber - 1] = newText;
+
+    console.log(`Task ${taskNumber} changed to "${newText}"`);
+
+  }
+
+  // User did not provide a number,
+  // edit the last task
+  else {
+
+    let newText = arguments.join(" ");
+
+    tasks[tasks.length - 1] = newText;
+
+    console.log(`Last task changed to "${newText}"`);
+
+  }
+
+}
 // The following line starts the application
 startApp("Zaynab Hwayji");
