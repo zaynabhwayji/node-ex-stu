@@ -81,8 +81,15 @@ function unknownCommand(c){
  * @returns {void}
  */
 function hello(sentence){
+ // Check if the user provided text after hello
+ if (sentence) {
   //prints hello followed by the text received after the hello command
   console.log(`hello ${sentence}!`)
+  }
+  // If the user only typed "hello"
+  else {
+  console.log('hello!')
+  }
 }
 
 
