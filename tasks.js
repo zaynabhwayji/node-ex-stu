@@ -15,7 +15,7 @@ let tasks = [
  * @param  {string} name the name of the app
  * @returns {void}
  */
-function startApp(name){
+function startApp(name) {
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
@@ -56,16 +56,16 @@ function onDataReceived(text) {
   if (command === 'quit' || command === 'exit') {
     quit();
   }
-  else if(command === 'hello'){
+  else if (command === 'hello') {
     hello(argument);
   }
-   else if(command === 'help'){
+  else if (command === 'help') {
     help();
   }
   else if (command === "list") {
     list();
   }
-  else{
+  else {
     unknownCommand(text);
   }
 }
@@ -78,8 +78,8 @@ function onDataReceived(text) {
  * @param  {string} c the text received
  * @returns {void}
  */
-function unknownCommand(c){
-  console.log('unknown command: "'+c.trim()+'"')
+function unknownCommand(c) {
+  console.log('unknown command: "' + c.trim() + '"')
 }
 
 
@@ -89,15 +89,15 @@ function unknownCommand(c){
  * @param {string} sentence the text received after hello command
  * @returns {void}
  */
-function hello(sentence){
- // Check if the user provided text after hello
- if (sentence) {
-  //prints hello followed by the text received after the hello command
-  console.log(`hello ${sentence}!`)
+function hello(sentence) {
+  // Check if the user provided text after hello
+  if (sentence) {
+    //prints hello followed by the text received after the hello command
+    console.log(`hello ${sentence}!`)
   }
   // If the user only typed "hello"
   else {
-  console.log('hello!')
+    console.log('hello!')
   }
 }
 
@@ -107,7 +107,7 @@ function hello(sentence){
  *
  * @returns {void}
  */
-function quit(){
+function quit() {
   console.log('Quitting now, goodbye!')
   process.exit();
 }
@@ -118,7 +118,7 @@ function quit(){
  *
  * @returns {void}
  */
-function help(){
+function help() {
   console.log("Available commands:");
   console.log("hello [text] - Greets the user with the provided text or just says hello if no text is provided.");
   console.log("quit - Exits the application.");
@@ -134,11 +134,11 @@ function help(){
  */
 function list() {
 
-    for (let i = 0; i < tasks.length; i++) {
+  for (let i = 0; i < tasks.length; i++) {
 
-        console.log(`${i + 1} - ${tasks[i]}`);
+    console.log(`${i + 1} - ${tasks[i]}`);
 
-    }
+  }
 
 }
 
