@@ -187,6 +187,10 @@ function remove(taskNumber) {
   // Convert the task number from string to number
   let index = Number(taskNumber);
 
+  if (isNaN(index) || index < 1 || index > tasks.length) {
+    console.log("Error: Invalid task number.");
+    return;
+  }
   // Remove one task from the array
   tasks.splice(index - 1, 1);
 
